@@ -74,6 +74,7 @@
 					<!--<suiteXmlFiles>
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>-->
+					<!--This is default-->
 					<suiteXmlFiles>
 						<!-- pass testng.xml files as argument from command line -->
 						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
