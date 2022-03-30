@@ -3,12 +3,16 @@ package testcases;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
@@ -42,15 +46,29 @@ public class BaseClass {
 		report.close();
 	}
 
+//	@BeforeMethod
+//	public void Setup(Method method) {
+//		test = report.startTest(method.getName());
+//		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+//		driver = new ChromeDriver();
+//		driver.get("https://www.simplilearn.com");
+//		driver.manage().window().maximize();
+//		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+//
+//	}
+
+	// Below code to run on selenium grid
 	@BeforeMethod
-	public void Setup(Method method) {
+	public void Setup(Method method) throws MalformedURLException {
 		test = report.startTest(method.getName());
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		driver = new ChromeDriver();
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setPlatform(Platform.WINDOWS);
+		cap.setBrowserName("chrome");
+		URL url = new URL("http://192.168.100.48:4444/wd/hub");
+		driver = new RemoteWebDriver(url, cap);
 		driver.get("https://www.simplilearn.com");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-
 	}
 
 	@AfterMethod

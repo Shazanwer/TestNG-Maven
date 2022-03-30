@@ -41,22 +41,25 @@ public class LoginPage {
 	// ======================Functions====================//
 
 	public void LoginFunction(String UserID, String UserPassword) {
+		try {
+			LoginLink.click();
+			test.log(LogStatus.PASS, "Click on Login Link", "Login Link clicked successfully");
 
-		LoginLink.click();
-		test.log(LogStatus.PASS, "Click on Login Link", "Login Link clicked successfully");
-		
-		UserName.sendKeys(UserID);
-		test.log(LogStatus.PASS, "Enter UserName", "Username entered successfully");
-		
-		Password.sendKeys(UserPassword);
-		test.log(LogStatus.PASS, "Enter Password", "Password entered successfully");
-		
-		RememberMeChkBox.click();
-		test.log(LogStatus.PASS, "Click on Remeber Me", "Clicked successfully");
-		
-		LoginBtn.click();
-		test.log(LogStatus.PASS, "Click on Login Button", "Login Button clicked successfully");
+			UserName.sendKeys(UserID);
+			test.log(LogStatus.PASS, "Enter UserName", "Username entered successfully");
 
+			Password.sendKeys(UserPassword);
+			test.log(LogStatus.PASS, "Enter Password", "Password entered successfully");
+
+			RememberMeChkBox.click();
+			test.log(LogStatus.PASS, "Click on Remeber Me", "Clicked successfully");
+
+			LoginBtn.click();
+			test.log(LogStatus.PASS, "Click on Login Button", "Login Button clicked successfully");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void UICheck() {

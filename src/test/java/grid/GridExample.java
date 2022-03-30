@@ -37,3 +37,12 @@ public class GridExample {
 
 	}
 }
+
+
+// launch cmd and go to grid folder path 
+// and type "java -jar selenium-server-standalone-3.141.59.jar -role hub" to run grid
+// launch cmd and register the node
+// java -Dwebdriver.chrome.driver="chromedriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localhost:4444/grid/register
+// java -Dwebdriver.chrome.driver="geckodriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localhost:4444/grid/register
+// java -jar selenium-server-standalone-3.141.59.jar -role webdriver -hub http://localhost:4444/grid/register -browser browserName=iexplore -browser browserName=firefox -browser browserName=chrome
+// java -jar selenium-server-standalone-3.141.59.jar -role webdriver -hub http://localhost:4444/grid/register -browser browserName=iexplore -browser browserName=firefox,maxInstance=5 -browser browserName=chrome,maxInstance=5
